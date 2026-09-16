@@ -25,3 +25,4 @@ Every push to `main` builds the site and deploys it to GitHub Pages (`.github/wo
 - `src/projects/index.ts` — the list of tabs
 - `src/components/` — shared blocks: sections, stats, work list, stack, flow diagrams
 - `design/` — the original Claude Design export the React version was ported from
+- `public/Viktor_Zhuk_CV.pdf` — the CV behind the "Download CV" buttons; replace the file to update it (the path is set in `src/data/profile.ts`, clear it to hide the buttons)

@@ -26,6 +26,14 @@
   gap: 6px;
 }
 
+.email {
+  color: var(--accent);
+}
+
+.email:hover {
+  color: var(--ink);
+}
+
 .telegram {
   color: var(--telegram);
 }

@@ -11,6 +11,7 @@
 .text {
   display: grid;
   gap: 6px;
+  max-width: 46ch;
 }
 
 .title {
@@ -26,21 +27,55 @@
   color: #61616f;
 }
 
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  padding: 12px 22px;
+  padding: 12px 20px;
+  border: 1px solid transparent;
   border-radius: 10px;
-  background: var(--telegram);
   font-size: 15px;
   font-weight: 500;
-  color: #fff;
   white-space: nowrap;
+}
+
+/* E-mail leads: it is the channel a recruiter will actually use. */
+.primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 10px 22px -14px var(--accent);
+}
+
+.primary:hover {
+  background: var(--accent-deep);
+  color: #fff;
+}
+
+.telegram {
+  background: var(--telegram);
+  color: #fff;
   box-shadow: 0 10px 22px -14px rgba(34, 158, 217, 0.95);
 }
 
-.button:hover {
+.telegram:hover {
   background: var(--telegram-hover);
+  color: #fff;
+}
+
+.secondary {
+  border-color: #e3e3ea;
+  background: #fff;
+  color: var(--ink);
+}
+
+.secondary:hover {
+  border-color: var(--ink);
+  background: var(--ink);
   color: #fff;
 }
