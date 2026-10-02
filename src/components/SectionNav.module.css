@@ -42,6 +42,10 @@
   color: var(--ink);
 }
 
+.item:hover .mark {
+  width: 22px;
+}
+
 .mark {
   width: 16px;
   height: 2px;

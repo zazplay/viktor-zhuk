@@ -43,6 +43,16 @@
   font-size: 15px;
   font-weight: 500;
   white-space: nowrap;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s var(--ease-out);
+}
+
+.button svg {
+  transition: transform 0.3s var(--ease-out);
 }
 
 /* E-mail leads: it is the channel a recruiter will actually use. */
@@ -78,4 +88,39 @@
   border-color: var(--ink);
   background: var(--ink);
   color: #fff;
+}
+
+@media (hover: hover) {
+  .button:hover {
+    transform: translateY(-2px);
+  }
+
+  .primary:hover {
+    box-shadow: 0 16px 26px -14px var(--accent);
+  }
+
+  .telegram:hover {
+    box-shadow: 0 16px 26px -14px rgba(34, 158, 217, 0.95);
+  }
+
+  .secondary:hover {
+    box-shadow: var(--hover-shadow);
+  }
+
+  .primary:hover svg {
+    transform: translateY(-1px) rotate(-10deg);
+  }
+
+  .telegram:hover svg {
+    transform: translate(2px, -2px) rotate(-8deg);
+  }
+
+  .secondary:hover svg {
+    transform: translateY(2px);
+  }
+}
+
+.button:active {
+  transform: scale(0.97);
+  transition-duration: 0.08s;
 }

@@ -99,6 +99,16 @@
   background: #fff;
   font-size: 14px;
   font-weight: 500;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s var(--ease-out);
+}
+
+.link svg {
+  transition: transform 0.3s var(--ease-out);
 }
 
 /* Email and CV: the two a recruiter actually needs, in the project's colour. */
@@ -165,4 +175,39 @@
     opacity: 1;
     transform: none;
   }
+}
+
+/* Hover motion, only where there is a real pointer: on touch it would stick after a tap. */
+@media (hover: hover) {
+  .link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+  }
+
+  .telegram:hover {
+    box-shadow: 0 14px 24px -12px rgba(34, 158, 217, 0.95);
+  }
+
+  /* Each icon does its own small thing. */
+  .telegram:hover svg {
+    transform: translate(2px, -2px) rotate(-8deg);
+  }
+
+  .email:hover .linkIcon {
+    transform: translateY(-1px) rotate(-10deg);
+  }
+
+  .cv:hover .linkIcon {
+    transform: translateY(2px);
+  }
+
+  .github:hover svg,
+  .linkedin:hover svg {
+    transform: scale(1.12);
+  }
+}
+
+.link:active {
+  transform: scale(0.97);
+  transition-duration: 0.08s;
 }

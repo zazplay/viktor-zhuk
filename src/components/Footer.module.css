@@ -24,6 +24,25 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  padding-bottom: 2px;
+  background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat;
+  transition:
+    color 0.18s ease,
+    background-size 0.25s var(--ease-out);
+}
+
+.link:hover {
+  background-size: 100% 1px;
+}
+
+.link svg {
+  transition: transform 0.3s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .link:hover svg {
+    transform: translateY(-2px);
+  }
 }
 
 .email {
