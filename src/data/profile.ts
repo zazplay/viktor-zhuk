@@ -1,3 +1,4 @@
+import { l } from '../i18n';
 import { brand } from './brands';
 
 export const links = {
@@ -7,14 +8,19 @@ export const links = {
 };
 
 export const profile = {
-  name: 'Viktor Zhuk',
-  role: 'Full-stack engineer · TypeScript · React + NestJS',
-  location: 'Tenerife, Spain · EU work permit · open to remote',
+  name: l('Viktor Zhuk', 'Віктор Жук'),
+  role: l('Full-stack engineer · TypeScript · React + NestJS', 'Full-stack розробник · TypeScript · React + NestJS'),
+  location: l(
+    'Spain · EU work permit · open to remote',
+    'Іспанія · дозвіл на роботу в ЄС · відкритий до віддаленої роботи',
+  ),
   email: 'zazplay3881@gmail.com',
   /** Served from public/; clear this to hide the download buttons. */
   cv: '/Viktor_Zhuk_CV.pdf',
-  intro:
-    'Full-stack engineer, TypeScript end to end. Four production systems in the last two and a half years: a self-service payment platform, a smart equipment locker, an escrow marketplace and a meal subscription service — each from an empty repository to real users and real money. Kiosk UIs, hardware integration, payment providers, recurring billing, cloud services and the consoles that operate them. Open to full-stack and architecture roles.',
+  intro: l(
+    'Full-stack engineer, TypeScript end to end. Four production systems in the last three years: a self-service payment platform, a smart equipment locker, an escrow marketplace and a meal subscription service — each from an empty repository to real users and real money. Kiosk UIs, hardware integration, payment providers, recurring billing, cloud services and the consoles that operate them. Open to full-stack and architecture roles.',
+    'Full-stack розробник, TypeScript на всіх рівнях. Чотири продакшн-системи за останні три роки: платіжна платформа самообслуговування, розумна шафа для видачі обладнання, маркетплейс з ескроу та сервіс харчування за підпискою — кожна від порожнього репозиторію до реальних користувачів і реальних грошей. Інтерфейси кіосків, інтеграція з обладнанням, платіжні провайдери, рекурентні платежі, хмарні сервіси та консолі для керування ними. Розглядаю full-stack та архітектурні ролі.',
+  ),
 };
 
 export const socials = [

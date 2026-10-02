@@ -1,3 +1,4 @@
+import type { Text } from '../i18n';
 import type { Brand, StackItem, TechTag } from '../types';
 import { brand } from './brands';
 import { links } from './profile';
@@ -38,13 +39,13 @@ const TECH = {
 type TechKey = keyof typeof TECH;
 
 /** Linked stack chip; `label` overrides the default name, e.g. "React 19". */
-export function tech(key: TechKey, label?: string): StackItem {
+export function tech(key: TechKey, label?: Text): StackItem {
   const { name, href, brand }: Tech = TECH[key];
   return { label: label ?? name, href, brand };
 }
 
 /** Work-item tag with the tech's brand icon. */
-export function tag(key: TechKey, label?: string): TechTag {
+export function tag(key: TechKey, label?: Text): TechTag {
   const { name, brand }: Tech = TECH[key];
   return { label: label ?? name, brand };
 }

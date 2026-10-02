@@ -1,39 +1,40 @@
 import type { LucideIcon } from 'lucide-react';
+import type { Text } from './i18n';
 
 /** A simple-icons style brand mark: a single path on a 24×24 viewBox. */
 export type Brand = { title: string; path: string };
 
-export type Stat = { value: string; label: string; accent?: boolean };
+export type Stat = { value: Text; label: Text; accent?: boolean };
 
-/** Tech tag under a work item; a plain string renders without an icon. */
-export type TechTag = string | { label: string; brand?: Brand };
+/** Tech tag under a work item; plain copy renders without an icon. */
+export type TechTag = Text | { label: Text; brand?: Brand };
 
 export type WorkItem = {
   icon: LucideIcon;
-  title: string;
-  text: string;
+  title: Text;
+  text: Text;
   tags?: TechTag[];
   /** Grey size summary appended after the tags. */
-  meta?: string;
+  meta?: Text;
   /** Someone else's part of the system: shown with a dash instead of a number. */
   external?: boolean;
 };
 
 export type Overview = {
-  period: string;
-  title: string;
-  badge: string;
-  summary: string;
+  period: Text;
+  title: Text;
+  badge: Text;
+  summary: Text;
   stats: Stat[];
   work: WorkItem[];
-  footnote?: string;
+  footnote?: Text;
 };
 
-export type Proof = { icon: LucideIcon; title: string; text: string };
+export type Proof = { icon: LucideIcon; title: Text; text: Text };
 
-/** Stack chip; a plain string renders as a chip without a link. */
-export type StackItem = string | { label: string; href?: string; brand?: Brand };
+/** Stack chip; plain copy renders as a chip without a link. */
+export type StackItem = Text | { label: Text; href?: string; brand?: Brand };
 
-export type StackGroup = { title: string; items: StackItem[] };
+export type StackGroup = { title: Text; items: StackItem[] };
 
-export type FlowNodeData = { icon: LucideIcon; title: string; caption: string };
+export type FlowNodeData = { icon: LucideIcon; title: Text; caption: Text };

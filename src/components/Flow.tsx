@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { keyOf, useLang, type Text } from '../i18n';
 import type { FlowNodeData } from '../types';
 import { cx } from '../lib/cx';
 import styles from './Flow.module.css';
@@ -77,13 +78,14 @@ export function FlowLine({ height, duration }: { height: number; duration: numbe
 type FlowNodeProps = FlowNodeData & { hub?: boolean };
 
 export function FlowNode({ icon: Icon, title, caption, hub }: FlowNodeProps) {
+  const { t } = useLang();
   return (
     <div className={cx(styles.node, hub && styles.hub)}>
       <div className={styles.nodeTitle}>
         <Icon size={14} className={styles.nodeIcon} aria-hidden />
-        {title}
+        {t(title)}
       </div>
-      <div className={styles.nodeCaption}>{caption}</div>
+      <div className={styles.nodeCaption}>{t(caption)}</div>
     </div>
   );
 }
@@ -94,7 +96,7 @@ function NodeRow({ nodes }: { nodes: FlowNodeData[] }) {
   return (
     <div className={styles.row} style={{ gridTemplateColumns: `repeat(${nodes.length}, minmax(0, 1fr))`, gap: NODE_GAP }}>
       {nodes.map((node) => (
-        <FlowNode key={node.title} {...node} />
+        <FlowNode key={keyOf(node.title)} {...node} />
       ))}
     </div>
   );
@@ -103,18 +105,19 @@ function NodeRow({ nodes }: { nodes: FlowNodeData[] }) {
 type HubDiagramProps = {
   inputs: FlowNodeData[];
   hub: ReactNode;
-  caption: string;
+  caption: Text;
   outputs: FlowNodeData[];
 };
 
 /** Inputs converge on a hub, which then fans out to outputs. */
 export function HubDiagram({ inputs, hub, caption, outputs }: HubDiagramProps) {
+  const { t } = useLang();
   return (
     <div className={styles.diagram}>
       <NodeRow nodes={inputs} />
       <FlowMerge columns={inputs.length} gap={NODE_GAP} branch={24} trunk={22} durations={[2.5, 3]} trunkDuration={2.7} />
       {hub}
-      <p className={styles.caption}>{caption}</p>
+      <p className={styles.caption}>{t(caption)}</p>
       <FlowSplit
         columns={outputs.length}
         gap={NODE_GAP}

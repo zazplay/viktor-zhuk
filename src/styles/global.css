@@ -28,6 +28,15 @@
 }
 
 /*
+ * Plus Jakarta Sans and DM Mono have no Cyrillic, so the Ukrainian version switches to
+ * close relatives that do. Browsers only download the faces a page actually uses.
+ */
+:root:lang(uk) {
+  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/*
  * Every project has its own colour. A project sets --accent and nothing else:
  * the tints below are mixed from it, and they are redeclared on each themed
  * element so they follow that element's own --accent.
@@ -87,4 +96,64 @@ a:hover {
 
 svg {
   flex-shrink: 0;
+}
+
+/* Anchors for the section nav */
+html {
+  scroll-behavior: smooth;
+}
+
+#projects,
+#experience,
+#skills,
+#contact {
+  scroll-margin-top: 28px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/*
+ * Motion: sections rise into place as they scroll into view (see useReveal). The section itself
+ * only fades; its children do the moving, so anchors still land exactly on the section.
+ */
+[data-reveal] {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+[data-reveal] > * {
+  transform: translateY(22px);
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+[data-reveal] > :nth-child(2) {
+  transition-delay: 0.06s;
+}
+
+[data-reveal][data-revealed] {
+  opacity: 1;
+}
+
+[data-reveal][data-revealed] > * {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal] > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+  }
 }

@@ -1,6 +1,7 @@
 /* The wrapper is the size container: the cards turn into rows on a narrow screen. */
 .wrap {
   container-type: inline-size;
+  animation: rise-in 0.7s 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 .list {
@@ -136,5 +137,17 @@
     --scale: 0.72;
     width: 78px;
     height: 52px;
+  }
+}
+
+/* Arrives just after the header on load. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }

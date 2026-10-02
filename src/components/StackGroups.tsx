@@ -1,14 +1,19 @@
+import { keyOf, useLang } from '../i18n';
 import type { StackGroup, StackItem } from '../types';
 import { BrandIcon } from './BrandIcon';
 import { ExternalLink } from './ExternalLink';
 import styles from './StackGroups.module.css';
 
+const asChip = (item: StackItem) =>
+  typeof item === 'object' && 'label' in item ? item : { label: item, href: undefined, brand: undefined };
+
 function Chip({ item }: { item: StackItem }) {
-  const { label, href, brand } = typeof item === 'string' ? { label: item, href: undefined, brand: undefined } : item;
+  const { t } = useLang();
+  const { label, href, brand } = asChip(item);
   const content = (
     <>
       {brand && <BrandIcon brand={brand} size={15} className={styles.icon} />}
-      {label}
+      {t(label)}
     </>
   );
 
@@ -22,14 +27,15 @@ function Chip({ item }: { item: StackItem }) {
 }
 
 export function StackGroups({ groups }: { groups: StackGroup[] }) {
+  const { t } = useLang();
   return (
     <div className={styles.groups}>
       {groups.map((group) => (
-        <div key={group.title} className={styles.group}>
-          <h3 className={styles.label}>{group.title}</h3>
+        <div key={keyOf(group.title)} className={styles.group}>
+          <h3 className={styles.label}>{t(group.title)}</h3>
           <div className={styles.chips}>
             {group.items.map((item) => (
-              <Chip key={typeof item === 'string' ? item : item.label} item={item} />
+              <Chip key={keyOf(asChip(item).label)} item={item} />
             ))}
           </div>
         </div>

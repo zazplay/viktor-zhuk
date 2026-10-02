@@ -3,6 +3,7 @@ import { Card } from '../../components/Card';
 import { FlowLine, FlowMerge } from '../../components/Flow';
 import { StatGrid } from '../../components/StatGrid';
 import { WindowChrome } from '../../components/WindowChrome';
+import { l, useLang } from '../../i18n';
 import { cx } from '../../lib/cx';
 import { fleet, fleetStats } from './data';
 import styles from './FleetDiagram.module.css';
@@ -11,10 +12,12 @@ const CHART = [40, 62, 34, 78, 55, 70];
 const CHART_PEAK = 3;
 const CONSOLE_ROWS = ['online', 'offline', 'online'] as const;
 
+const STATUS = { online: l('online', 'онлайн'), offline: l('offline', 'офлайн') };
+
 function ConsoleMock() {
   return (
     <div className={styles.console} aria-hidden="true">
-      <WindowChrome label="Operator console" size="sm" />
+      <WindowChrome label={l('Operator console', 'Консоль оператора')} size="sm" />
       <div className={styles.consoleBody}>
         <div className={styles.sidebar}>
           {[0, 1, 2, 3].map((i) => (
@@ -44,6 +47,7 @@ function ConsoleMock() {
 
 /** Kiosks sync into the cloud core, which feeds a single operator console. */
 export function FleetDiagram() {
+  const { t } = useLang();
   return (
     <Card className={styles.card}>
       <div className={styles.diagram}>
@@ -58,7 +62,7 @@ export function FleetDiagram() {
               <div className={styles.kioskId}>{id}</div>
               <div className={cx(styles.status, status === 'offline' && styles.statusOffline)}>
                 <span className={styles.statusDot} />
-                {status}
+                {t(STATUS[status])}
               </div>
             </div>
           ))}
@@ -77,12 +81,19 @@ export function FleetDiagram() {
         <div className={styles.cloud}>
           <div className={styles.cloudTitle}>
             <Cloud size={15} className={styles.cloudIcon} aria-hidden />
-            Cloud core
+            {t(l('Cloud core', 'Хмарне ядро'))}
           </div>
-          <div className={styles.cloudCaption}>scheduled sync · retries · journal</div>
+          <div className={styles.cloudCaption}>
+            {t(l('scheduled sync · retries · journal', 'синхронізація за розкладом · повтори · журнал'))}
+          </div>
         </div>
         <p className={styles.caption}>
-          An offline kiosk keeps taking payments and queues records locally — they fly up as soon as the link is back.
+          {t(
+            l(
+              'An offline kiosk keeps taking payments and queues records locally — they fly up as soon as the link is back.',
+              'Кіоск без звʼязку й далі приймає платежі та складає записи в локальну чергу — вони відлітають у хмару, щойно звʼязок повертається.',
+            ),
+          )}
         </p>
 
         <FlowLine height={28} duration={2.6} />

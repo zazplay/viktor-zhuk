@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import { Card } from '../../components/Card';
+import { keyOf, l, useLang } from '../../i18n';
 import { cx } from '../../lib/cx';
 import { kioskParts, paymentMethods, type PartLetter } from './data';
 import styles from './KioskAnatomy.module.css';
@@ -18,23 +19,24 @@ const HOTSPOTS: Record<PartLetter, { side: 'left' | 'right'; x: number; y: numbe
 };
 
 function KioskDrawing() {
+  const { t } = useLang();
   return (
     <div aria-hidden="true">
       <div className={styles.screen}>
-        <div className={styles.screenLabel}>Choose payment</div>
+        <div className={styles.screenLabel}>{t(l('Choose payment', 'Оберіть оплату'))}</div>
         <div className={styles.methods}>
           {paymentMethods.map(({ icon: Icon, label, active }) => (
-            <div key={label} className={cx(styles.method, active && styles.methodActive)}>
+            <div key={keyOf(label)} className={cx(styles.method, active && styles.methodActive)}>
               <span className={styles.methodName}>
                 <Icon size={11} />
-                {label}
+                {t(label)}
               </span>
-              <span className={styles.methodState}>ready</span>
+              <span className={styles.methodState}>{t(l('ready', 'готово'))}</span>
             </div>
           ))}
         </div>
         <div className={styles.total}>
-          <span className={styles.totalLabel}>Total</span>
+          <span className={styles.totalLabel}>{t(l('Total', 'Разом'))}</span>
           <span className={styles.totalValue}>◈ 1 250</span>
         </div>
         <div className={styles.led} />
@@ -74,6 +76,7 @@ function KioskDrawing() {
  * joined by a leader line; on a narrow one the leaders end in letters keyed to the list below.
  */
 export function KioskAnatomy() {
+  const { t } = useLang();
   return (
     <Card padding="lg" className={styles.card}>
       <div className={styles.stage}>
@@ -94,9 +97,9 @@ export function KioskAnatomy() {
                   <div className={styles.label}>
                     <div className={styles.title}>
                       <Icon size={15} className={styles.icon} />
-                      {title}
+                      {t(title)}
                     </div>
-                    <div className={styles.text}>{text}</div>
+                    <div className={styles.text}>{t(text)}</div>
                   </div>
                 </li>
               );
@@ -114,9 +117,9 @@ export function KioskAnatomy() {
             <div>
               <div className={styles.partTitle}>
                 <Icon size={16} className={styles.icon} aria-hidden />
-                {title}
+                {t(title)}
               </div>
-              <div className={styles.partText}>{text}</div>
+              <div className={styles.partText}>{t(text)}</div>
             </div>
           </li>
         ))}

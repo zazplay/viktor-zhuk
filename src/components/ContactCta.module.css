@@ -11,7 +11,7 @@
 .text {
   display: grid;
   gap: 6px;
-  max-width: 46ch;
+  max-width: 33.7em;
 }
 
 .title {

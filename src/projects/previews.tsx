@@ -1,4 +1,5 @@
 import { KeyRound } from 'lucide-react';
+import { l, useLang } from '../i18n';
 import { cx } from '../lib/cx';
 import styles from './previews.module.css';
 
@@ -38,9 +39,10 @@ export function LockerPreview() {
 const WEEK = ['on', 'on', 'off', 'on', 'off', 'add', 'off'];
 
 export function MealsPreview() {
+  const { t } = useLang();
   return (
     <div className={styles.plan}>
-      <div className={styles.planHead}>per week</div>
+      <div className={styles.planHead}>{t(l('per week', 'на тиждень'))}</div>
       <div className={styles.planPrice}>◈ 420</div>
       <div className={styles.planWeek}>
         {WEEK.map((day, i) => (
@@ -52,11 +54,12 @@ export function MealsPreview() {
 }
 
 export function MarketplacePreview() {
+  const { t } = useLang();
   return (
     <div className={styles.escrow}>
       <div className={styles.escrowHead}>
         <KeyRound size={9} className={styles.escrowIcon} />
-        in escrow
+        {t(l('in escrow', 'на ескроу'))}
       </div>
       <div className={styles.escrowAmount}>◈ 1 250</div>
       <div className={styles.escrowBar}>

@@ -1,17 +1,19 @@
 import { useRef, type ComponentType, type KeyboardEvent } from 'react';
 import type { LucideIcon } from 'lucide-react';
+import { l, useLang, type Text } from '../i18n';
 import styles from './ProjectTabs.module.css';
 
 export type Tab<Id extends string> = {
   id: Id;
-  label: string;
+  label: Text;
   /** Short line under the title, in the same voice as the captions on the diagrams. */
-  caption: string;
+  caption: Text;
   icon: LucideIcon;
   Preview: ComponentType;
 };
 
 type Props<Id extends string> = {
+  id?: string;
   tabs: readonly Tab<Id>[];
   active: Id;
   onChange: (id: Id) => void;
@@ -20,7 +22,8 @@ type Props<Id extends string> = {
 export const tabId = (id: string) => `tab-${id}`;
 export const panelId = (id: string) => `panel-${id}`;
 
-export function ProjectTabs<Id extends string>({ tabs, active, onChange }: Props<Id>) {
+export function ProjectTabs<Id extends string>({ id, tabs, active, onChange }: Props<Id>) {
+  const { t } = useLang();
   const buttons = useRef(new Map<Id, HTMLButtonElement>());
 
   /** Arrow keys walk the tabs, as the tablist pattern expects. */
@@ -40,8 +43,8 @@ export function ProjectTabs<Id extends string>({ tabs, active, onChange }: Props
   }
 
   return (
-    <div className={styles.wrap}>
-      <div role="tablist" aria-label="Projects" className={styles.list} onKeyDown={handleKeyDown}>
+    <div id={id} className={styles.wrap}>
+      <div role="tablist" aria-label={t(l('Projects', 'Проєкти'))} className={styles.list} onKeyDown={handleKeyDown}>
         {tabs.map(({ id, label, caption, icon: Icon, Preview }) => (
           <button
             key={id}
@@ -64,9 +67,9 @@ export function ProjectTabs<Id extends string>({ tabs, active, onChange }: Props
             <span className={styles.text}>
               <span className={styles.title}>
                 <Icon size={14} className={styles.icon} aria-hidden />
-                {label}
+                {t(label)}
               </span>
-              <span className={styles.caption}>{caption}</span>
+              <span className={styles.caption}>{t(caption)}</span>
             </span>
           </button>
         ))}

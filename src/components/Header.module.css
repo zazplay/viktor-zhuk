@@ -3,6 +3,34 @@
   gap: 14px;
 }
 
+.header > * {
+  animation: rise-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.header > :nth-child(2) {
+  animation-delay: 0.06s;
+}
+
+.header > :nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+.header > :nth-child(4) {
+  animation-delay: 0.18s;
+}
+
+.header > :nth-child(5) {
+  animation-delay: 0.24s;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+}
+
 .eyebrow {
   display: flex;
   align-items: center;
@@ -45,7 +73,8 @@
 }
 
 .intro {
-  max-width: 56ch;
+  /* In em, not ch: ch follows the font's "0", which is narrower in the Cyrillic fonts. */
+  max-width: 41em;
   margin: 0;
   font-size: clamp(15px, 1.5vw, 17px);
   line-height: 1.55;
@@ -124,4 +153,16 @@
   border-color: var(--linkedin);
   background: var(--linkedin);
   color: #fff;
+}
+
+/* On load the header settles in line by line. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
