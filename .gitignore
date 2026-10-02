@@ -1,7 +1,11 @@
 node_modules
 dist
+dist-single
 *.local
 .DS_Store
 
 # Reference screenshots pasted into the design session; kept local only
 design/uploads/
+
+# Single-file build (npm run build:single)
+single/

@@ -1,18 +1,22 @@
-import { skills } from '../data/career';
+import { skills } from '../data/site';
+import { ui } from '../data/ui';
 import { keyOf, useLang } from '../i18n';
-import styles from './Skills.module.css';
+import { cx } from '../lib/cx';
+import styles from './Sections.module.css';
 
-/** The whole toolbox in one place; per-project stacks live inside each tab. */
 export function Skills() {
   const { t } = useLang();
   return (
-    <dl className={styles.list}>
-      {skills.map(({ title, items }) => (
-        <div key={keyOf(title)} className={styles.row}>
-          <dt className={styles.label}>{t(title)}</dt>
-          <dd className={styles.items}>{t(items)}</dd>
-        </div>
-      ))}
-    </dl>
+    <section id="skills" className={styles.section}>
+      <div className={styles.inner}>
+        <h2 className={cx(styles.h2, styles.skillsTitle)}>{t(ui.skills)}</h2>
+        {skills.map((s) => (
+          <div key={keyOf(s.title)} className={cx(styles.row, styles.skill)}>
+            <div className={styles.skillTitle}>{t(s.title)}</div>
+            <div className={styles.skillItems}>{t(s.items)}</div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }

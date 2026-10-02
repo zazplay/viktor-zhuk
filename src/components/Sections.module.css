@@ -1,0 +1,221 @@
+.section {
+  border-bottom: 1px solid var(--line);
+}
+
+.white {
+  background: var(--surface);
+}
+
+.inner {
+  max-width: 1080px;
+  padding: 64px var(--gutter);
+  box-sizing: border-box;
+  container-type: inline-size;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Rows of a date/label column beside a content column three times as wide. */
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  gap: 4px 48px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+@container (max-width: 640px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* About */
+.about {
+  max-width: 960px;
+  padding: 72px var(--gutter) 56px;
+  box-sizing: border-box;
+}
+
+.intro {
+  margin: 18px 0 0;
+  font-size: clamp(20px, 2.2vw, 25px);
+  line-height: 1.5;
+  color: var(--ink);
+  text-wrap: pretty;
+  max-width: 780px;
+}
+
+.totals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin-top: 40px;
+  border-top: 2px solid var(--ink);
+}
+
+.total {
+  padding: 18px 20px 0 0;
+}
+
+.totalValue {
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.totalLabel {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.nda {
+  max-width: 1080px;
+  padding: 24px var(--gutter) 0;
+  box-sizing: border-box;
+  font-size: 13.5px;
+  color: var(--faint);
+}
+
+/* Experience */
+.job {
+  gap: 12px 48px;
+  padding: 32px 0;
+}
+
+.jobMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.period {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.company {
+  color: var(--muted);
+}
+
+.jobRole {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.jobSummary {
+  margin-top: 6px;
+  font-size: 16.5px;
+  color: var(--text-soft);
+}
+
+.points {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 720px;
+}
+
+.points li {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.educationTitle {
+  margin-top: 40px;
+}
+
+.edu {
+  padding: 16px 0;
+}
+
+.eduPeriod {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.eduTitle {
+  font-size: 16.5px;
+  font-weight: 500;
+}
+
+.eduPlace {
+  font-size: 14.5px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* Skills */
+.skillsTitle {
+  margin-bottom: 16px;
+}
+
+.skill {
+  padding: 14px 0;
+  border-bottom-color: var(--line);
+  font-size: 15.5px;
+}
+
+.skillTitle {
+  font-weight: 600;
+}
+
+.skillItems {
+  line-height: 1.65;
+  color: var(--text-soft);
+}
+
+/* Contact */
+.contact {
+  background: var(--navy);
+  color: #fff;
+}
+
+.contactInner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contactText {
+  max-width: 560px;
+}
+
+.contactTitle {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.contactSubtitle {
+  margin: 12px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--on-navy);
+}
+
+.contactActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}

@@ -1,18 +1,15 @@
-.page {
-  min-height: 100vh;
-  padding: clamp(24px, 4.5vw, 56px) clamp(18px, 4vw, 32px);
-  background: var(--bg);
-  font-family: var(--font-sans);
-  color: var(--ink);
-}
-
-/* Header, tabs, the active project's sections, CTA and footer all share one vertical rhythm. */
-.flow {
+.layout {
   display: grid;
-  gap: var(--flow-gap);
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 100vh;
 }
 
-.page > .flow {
-  max-width: 900px;
-  margin: 0 auto;
+@media (min-width: 960px) {
+  .layout {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
+}
+
+.main {
+  min-width: 0;
 }

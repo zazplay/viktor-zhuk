@@ -1,0 +1,275 @@
+.wrap {
+  --acc: #1d3b6e;
+  --ink: #13254a;
+  --sub: #5b6475;
+  --line: #e4e3dd;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--ink);
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.eyebrow {
+  font: 500 12px/1 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--acc);
+  margin-bottom: 10px;
+}
+
+.title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.card {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.overlay path {
+  fill: none;
+  stroke: var(--acc);
+  stroke-width: 1;
+  opacity: 0.55;
+  transition: opacity 0.2s, stroke-width 0.2s;
+}
+
+.overlay path.on {
+  opacity: 1;
+  stroke-width: 1.5;
+}
+
+.dot {
+  fill: var(--acc);
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.halo {
+  fill: var(--acc);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.halo.on {
+  opacity: 0.18;
+}
+
+.labels {
+  visibility: hidden;
+}
+
+.labels[data-placed] {
+  visibility: visible;
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  width: 236px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 6px 8px;
+  margin: -6px -8px;
+  border-radius: 10px;
+  cursor: default;
+  transition: background 0.2s;
+  will-change: transform;
+}
+
+/* Kiosk: labels stand in two columns either side of the model. */
+.columns .label.l {
+  left: 30px;
+  text-align: right;
+  align-items: flex-end;
+}
+
+.columns .label.r {
+  right: 30px;
+}
+
+.columns .label.l .labelTitle {
+  flex-direction: row-reverse;
+}
+
+.columns .labelTitle {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.columns .label .desc {
+  font-size: 12.5px;
+}
+
+.columns .label .key {
+  font-size: 11px;
+}
+
+/* Locker: labels sit in a row above and below the model, placed along x. */
+.rows .label {
+  left: 0;
+}
+
+.labelTitle,
+.itemTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.005em;
+  transition: color 0.2s;
+}
+
+.labelTitle {
+  white-space: nowrap;
+}
+
+.itemTitle {
+  min-width: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.key {
+  font: 500 12px/1 var(--font-mono);
+  color: var(--acc);
+}
+
+.desc {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--sub);
+  text-wrap: pretty;
+}
+
+.label.on {
+  background: #eaeef5;
+}
+
+.label.on .labelTitle {
+  color: var(--acc);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  stroke: var(--acc);
+  fill: none;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--acc);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font: 500 11px/1 var(--font-mono);
+  color: var(--acc);
+  transition: background 0.2s, color 0.2s;
+}
+
+.badge.on {
+  background: var(--acc);
+  color: #fff;
+}
+
+.hint {
+  position: absolute;
+  left: 20px;
+  bottom: 16px;
+  white-space: nowrap;
+  font: 400 11px/1 var(--font-mono);
+  color: #9a9aa5;
+  letter-spacing: 0.04em;
+}
+
+.list {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  column-gap: 10px;
+  row-gap: 3px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.item .key {
+  grid-row: span 2;
+  font-size: 11px;
+  line-height: 20px;
+}
+
+.item .desc {
+  font-size: 12.5px;
+}
+
+.item.on {
+  border-color: var(--acc);
+  background: #eaeef5;
+}
+
+.narrow .label,
+.narrow .hint {
+  display: none;
+}
+
+.narrow .badge {
+  display: flex;
+}
+
+.narrow .list {
+  display: grid;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wrap * {
+    transition: none !important;
+  }
+}

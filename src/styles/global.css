@@ -1,86 +1,46 @@
 :root {
-  --bg: #fafafc;
-  --ink: #1b1b22;
+  --bg: #f6f6f3;
+  --surface: #fff;
+  --ink: #16191f;
+  --navy: #13254a;
+  --accent: #1d3b6e;
+  --accent-deep: #0f2140;
 
-  /* Brand colour, used until a project is picked. */
-  --accent: #4b3be4;
+  --text: #2d3138;
+  --text-soft: #3a3f47;
+  --muted: #5d626b;
+  --faint: #6b7079;
 
-  --text: #55555f;
-  --text-strong: #48485a;
-  --text-soft: #5a5a68;
-  --muted: #8a8a98;
-  --faint: #a0a0ae;
-  --label: #7a7a8a;
+  --line: #e3e3df;
+  --line-strong: #dcdcd7;
+  --line-soft: #ecece8;
 
-  --line: #e9e9ef;
-  --line-soft: #ededf2;
-  --line-faint: #f2f2f6;
+  /* Sidebar and contact band */
+  --on-navy: #c9d3e6;
+  --on-navy-soft: #a9b7d1;
+  --on-navy-dim: #9fb0cf;
 
-  --green: #2f9e6e;
-  --telegram: #229ed9;
-  --telegram-hover: #1b87bc;
-  --linkedin: #0a66c2;
+  --font-sans: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-mono: 'DM Mono', ui-monospace, monospace;
-
-  --flow-gap: clamp(34px, 4.5vw, 46px);
-
-  /* Shared hover motion: a quick ease that settles softly. */
-  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
-  --hover-shadow: 0 12px 20px -14px rgba(27, 27, 34, 0.45);
+  --gutter: 64px;
 }
 
-/*
- * Plus Jakarta Sans and DM Mono have no Cyrillic, so the Ukrainian version switches to
- * close relatives that do. Browsers only download the faces a page actually uses.
- */
-:root:lang(uk) {
-  --font-sans: 'Manrope', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+@media (max-width: 640px) {
+  :root {
+    --gutter: 20px;
+  }
 }
 
-/*
- * Every project has its own colour. A project sets --accent and nothing else:
- * the tints below are mixed from it, and they are redeclared on each themed
- * element so they follow that element's own --accent.
- */
-[data-project='pay'] {
-  --accent: #4a8b10;
+html {
+  scroll-behavior: smooth;
 }
 
-[data-project='lock'] {
-  --accent: #7c3aed;
-}
-
-[data-project='market'] {
-  --accent: #1d62d8;
-}
-
-[data-project='meals'] {
-  --accent: #16845c;
-}
-
-:root,
-[data-project] {
-  --accent-soft: color-mix(in srgb, var(--accent) 5%, #fff);
-  --accent-tint: color-mix(in srgb, var(--accent) 10%, #fff);
-  --accent-line: color-mix(in srgb, var(--accent) 16%, #fff);
-  --accent-line-2: color-mix(in srgb, var(--accent) 24%, #fff);
-  --dash: color-mix(in srgb, var(--accent) 32%, #fff);
-  --accent-hover: color-mix(in srgb, var(--accent) 38%, #fff);
-  --accent-ghost: color-mix(in srgb, var(--accent) 18%, transparent);
-  --accent-deep: color-mix(in srgb, var(--accent) 18%, var(--ink));
-}
-
-html,
 body {
   margin: 0;
-  padding: 0;
   background: var(--bg);
-}
-
-body {
+  color: var(--ink);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -90,75 +50,24 @@ a {
 }
 
 a:hover {
-  color: var(--ink);
+  color: var(--accent-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 ::selection {
-  background: var(--accent);
-  color: #fff;
-}
-
-svg {
-  flex-shrink: 0;
-}
-
-/* Anchors for the section nav */
-html {
-  scroll-behavior: smooth;
-}
-
-#projects,
-#experience,
-#skills,
-#contact {
-  scroll-margin-top: 28px;
+  background: #d5deec;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-}
-
-/*
- * Motion: sections rise into place as they scroll into view (see useReveal). The section itself
- * only fades; its children do the moving, so anchors still land exactly on the section.
- */
-[data-reveal] {
-  opacity: 0;
-  transition: opacity 0.7s ease;
-}
-
-[data-reveal] > * {
-  transform: translateY(22px);
-  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-[data-reveal] > :nth-child(2) {
-  transition-delay: 0.06s;
-}
-
-[data-reveal][data-revealed] {
-  opacity: 1;
-}
-
-[data-reveal][data-revealed] > * {
-  transform: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal],
-  [data-reveal] > * {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
-    animation-delay: 0s !important;
     transition-duration: 0.01ms !important;
   }
 }

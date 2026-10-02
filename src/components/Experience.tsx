@@ -1,45 +1,43 @@
-import { GraduationCap } from 'lucide-react';
-import { education, jobs } from '../data/career';
-import { keyOf, l, useLang } from '../i18n';
-import { Card } from './Card';
-import styles from './Experience.module.css';
+import { edu, jobs } from '../data/site';
+import { ui } from '../data/ui';
+import { keyOf, useLang } from '../i18n';
+import { cx } from '../lib/cx';
+import styles from './Sections.module.css';
 
-/** Where the work happened: roles, dates and what each one involved. */
 export function Experience() {
   const { t } = useLang();
   return (
-    <Card className={styles.card}>
-      <ol className={styles.jobs}>
-        {jobs.map(({ role, company, period, summary, points }) => (
-          <li key={keyOf(company)} className={styles.job}>
-            <div className={styles.head}>
-              <h3 className={styles.role}>{t(role)}</h3>
-              <span className={styles.period}>{t(period)}</span>
+    <section id="experience" className={cx(styles.section, styles.white)}>
+      <div className={styles.inner}>
+        <h2 className={styles.h2}>{t(ui.experience)}</h2>
+        {jobs.map((j) => (
+          <div key={keyOf(j.period)} className={cx(styles.row, styles.job)}>
+            <div className={styles.jobMeta}>
+              <span className={styles.period}>{t(j.period)}</span>
+              <span className={styles.company}>{t(j.company)}</span>
             </div>
-            <div className={styles.company}>{t(company)}</div>
-            <p className={styles.summary}>{t(summary)}</p>
-            <ul className={styles.points}>
-              {points.map((point) => (
-                <li key={keyOf(point)}>{t(point)}</li>
-              ))}
-            </ul>
-          </li>
+            <div>
+              <div className={styles.jobRole}>{t(j.role)}</div>
+              <div className={styles.jobSummary}>{t(j.summary)}</div>
+              <ul className={styles.points}>
+                {j.points.map((pt) => (
+                  <li key={keyOf(pt)}>{t(pt)}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
         ))}
-      </ol>
-
-      <div className={styles.education}>
-        <h3 className={styles.educationTitle}>
-          <GraduationCap size={14} className={styles.educationIcon} aria-hidden />
-          {t(l('Education', 'Освіта'))}
-        </h3>
-        {education.map(({ title, place, period }) => (
-          <div key={keyOf(title)} className={styles.degree}>
-            <span className={styles.degreeTitle}>{t(title)}</span>
-            <span className={styles.degreePlace}>{t(place)}</span>
-            <span className={styles.period}>{period}</span>
+        <h3 className={cx(styles.eyebrow, styles.educationTitle)}>{t(ui.education)}</h3>
+        {edu.map((e) => (
+          <div key={keyOf(e.title)} className={cx(styles.row, styles.edu)}>
+            <span className={styles.eduPeriod}>{t(e.period)}</span>
+            <div>
+              <div className={styles.eduTitle}>{t(e.title)}</div>
+              <div className={styles.eduPlace}>{t(e.place)}</div>
+            </div>
           </div>
         ))}
       </div>
-    </Card>
+    </section>
   );
 }

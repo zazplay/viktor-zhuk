@@ -1,0 +1,219 @@
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  align-items: baseline;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.num {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.badge {
+  flex: 1 1 260px;
+}
+
+.title {
+  margin: 10px 0 0;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.summary {
+  margin: 18px 0 0;
+  font-size: 17.5px;
+  line-height: 1.7;
+  color: var(--text);
+  text-wrap: pretty;
+  max-width: 760px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  margin-top: 28px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  max-width: 880px;
+}
+
+.stat {
+  padding: 16px 20px;
+  border-right: 1px solid var(--line-soft);
+}
+
+.statValue {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.statLabel {
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.model {
+  /* Holds the model's place (heading and card) while three.js loads, so the page doesn't jump. */
+  margin-top: 40px;
+  min-height: 800px;
+}
+
+.shots {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+
+@media (max-width: 640px) {
+  .shots {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.shot {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.frame {
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  display: block;
+}
+
+.caption {
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+.heading {
+  margin-top: 48px;
+}
+
+.work {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 28px 48px;
+  margin-top: 18px;
+}
+
+.workItem {
+  border-top: 1px solid var(--ink);
+  padding-top: 14px;
+}
+
+.workTitle {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.workText {
+  margin-top: 8px;
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--text-soft);
+  text-wrap: pretty;
+}
+
+.proofs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 18px;
+  background: var(--line-strong);
+  border: 1px solid var(--line-strong);
+}
+
+@media (min-width: 1280px) {
+  .proofs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .proofs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.proof {
+  background: var(--surface);
+  padding: 20px;
+}
+
+.proofTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.proofText {
+  margin-top: 8px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+.stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 20px 48px;
+  margin-top: 18px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.groupTitle {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  padding: 6px 11px;
+  font-size: 14px;
+  color: #22262d;
+  white-space: nowrap;
+}
+
+.footnote {
+  margin: 28px 0 0;
+  font-size: 13.5px;
+  color: var(--faint);
+}

@@ -1,0 +1,57 @@
+/* Buttons on the navy sidebar and contact band. */
+.button {
+  padding: 10px 16px;
+  font-size: 15px;
+  text-align: center;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.button:hover {
+  text-decoration: none;
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.primary {
+  background: #fff;
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.primary:hover {
+  background: #dfe6f2;
+  color: var(--navy);
+}
+
+.primary:active {
+  background: #c9d4e8;
+}
+
+.secondary {
+  /* One pixel less vertical padding keeps it level with the primary button, which has no border. */
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  font-weight: 500;
+}
+
+.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  color: #fff;
+}
+
+.secondary:active {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.large {
+  padding: 12px 20px;
+}
+
+.large.secondary {
+  padding: 11px 20px;
+}
