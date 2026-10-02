@@ -52,10 +52,14 @@ export function LangProvider({ children }: { children: ReactNode }) {
     } catch {
       // not remembered, still works
     }
-    const url = new URL(window.location.href);
-    if (lang === 'en') url.searchParams.delete('lang');
-    else url.searchParams.set('lang', lang);
-    window.history.replaceState(null, '', url);
+    try {
+      const url = new URL(window.location.href);
+      if (lang === 'en') url.searchParams.delete('lang');
+      else url.searchParams.set('lang', lang);
+      window.history.replaceState(null, '', url);
+    } catch {
+      // some contexts (a page opened as a local file) refuse URL rewrites; the language still applies
+    }
   }, [lang]);
 
   return <LangContext.Provider value={{ lang, setLang }}>{children}</LangContext.Provider>;

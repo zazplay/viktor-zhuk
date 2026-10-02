@@ -1,5 +1,5 @@
 import { Download, Mail, MapPin } from 'lucide-react';
-import { profile, socials } from '../data/profile';
+import { cvLinkAttrs, profile, socials } from '../data/profile';
 import { l, useLang } from '../i18n';
 import { cx } from '../lib/cx';
 import { BrandIcon } from './BrandIcon';
@@ -36,7 +36,7 @@ export function Header() {
           </ExternalLink>
         ))}
         {profile.cv && (
-          <a href={profile.cv} download className={cx(styles.link, styles.cv)}>
+          <a href={profile.cv} download={profile.cvName} {...cvLinkAttrs} className={cx(styles.link, styles.cv)}>
             <Download size={16} className={styles.linkIcon} aria-hidden />
             {t(l('Download CV', 'Завантажити CV'))}
           </a>

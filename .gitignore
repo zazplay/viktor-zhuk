@@ -5,3 +5,6 @@ dist
 
 # Reference screenshots pasted into the design session; kept local only
 design/uploads/
+
+# Single-file build (npm run build:single)
+single/

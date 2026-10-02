@@ -1,6 +1,6 @@
 import { Download, Mail } from 'lucide-react';
 import { brand } from '../data/brands';
-import { links, profile } from '../data/profile';
+import { cvLinkAttrs, links, profile } from '../data/profile';
 import { l, useLang } from '../i18n';
 import { cx } from '../lib/cx';
 import { useReveal } from '../lib/useReveal';
@@ -40,7 +40,7 @@ export function ContactCta() {
           Telegram
         </ExternalLink>
         {profile.cv && (
-          <a href={profile.cv} download className={cx(styles.button, styles.secondary)}>
+          <a href={profile.cv} download={profile.cvName} {...cvLinkAttrs} className={cx(styles.button, styles.secondary)}>
             <Download size={17} aria-hidden />
             {t(COPY.cv)}
           </a>
